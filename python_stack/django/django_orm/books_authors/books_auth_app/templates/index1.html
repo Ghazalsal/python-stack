@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books and Authors</title>
+    <style>
+        body{
+            display: flex;
+        }
+        .authors{
+            flex: 1;
+        }
+        .table{
+            flex: 1;
+        }
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="authors">
+        <h1>Add a author</h1>
+        <form action="/addauth" method="POST">
+        {% csrf_token%}
+        First Name : <input type="text" name="first_name"><br><br>
+        Last Name : <input type="text" name="last_name"><br><br>
+        Notes : <input type="text" name="notes"><br><br>
+
+        <button>Add</button>
+        </form>
+    </div>  
+    <div class="table">
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+        </tr>
+        {% for author in authors %}
+        <tr>
+            <td>{{author.id}}</td>
+            <td>{{author.first_name}}{{author.last_name}} </td>
+            
+            <td><a href="/auth/{{author.id}}">view</a></td>
+        </tr>
+        {% endfor %}  
+    </table>
+        </form>
+    </div>  
+</body>
+</html>

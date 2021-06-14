@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semi-Restful TV Shows</title>
+    <style>
+        .link{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <a href="/shows" class="link">Go Back</a>
+    <h1>TV Show {{show.id}}</h1>
+    <h3>Title: {{show.title}}</h3>
+    <h3>Network: {{show.Network}}</h3>
+    <h3>Release Date: {{show.release_date}}</h3>
+    <h3>Description: {{show.desc}}</h3>
+    <br><br><br>
+    <h3>Last Updated: {{show.updated_at}}</h3>
+    <h3>
+        <a href="/shows/{{show.id}}/edit">edit</a>
+        |
+        <a href="show/{{show.id}}/delete">delete</a>
+    </h3>
+</body>
+</html>

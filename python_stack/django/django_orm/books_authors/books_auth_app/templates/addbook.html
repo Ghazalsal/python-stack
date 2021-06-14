@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books and Authors</title>
+</head>
+<body>
+    <h1>ID:{{id.id}}</h1>
+    <p>Title: {{id.title}}</p>
+    <p>Description: {{id.desc}}</p>
+    <h4>Authors:
+        {% for author in id.Author.all %}
+        <ul>
+            <li>{{author.first_name }} {{author.last_name}}</li>
+        </ul>
+        
+        {% endfor %}
+    </h4>
+    <form action="labook/{{id.id}}" method="POST">
+        {% csrf_token%}
+        <select name="sel" >
+            {% for author in authors %}
+            <option value="{{author.id}}">{{author.first_name }} {{author.last_name}}</option>
+            {% endfor %}
+        </select>
+            <button>Add</button>
+        </form>
+    
+</body>
+</html>

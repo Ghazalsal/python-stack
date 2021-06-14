@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<style>
+    #username-error{
+        display: none;
+        color: red;
+    }
+</style>
+<script> 
+function checkValidation() {
+    $('#login-form').submit()
+    // if ($('#username').val() == "" ) {
+    //     $('#username-error').css('display','block')
+    // }
+    // else {
+    //     $('#login-form').submit()
+    // }
+}
+
+</script>
+<body>
+    
+    <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Login</a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Dont Have Account?</button>
+        
+    </p>
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+                    <div id="username-error">Plaease fill the Username</div>
+                    <form action="/login" method="POST" id="login-form">
+                        {% csrf_token %}
+                        Username: <input type="text" name="username" id ="username"><br><br>
+                        Password: <input type="password" name="password"    ><br><br>
+                        <button onclick="checkValidation">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body">
+                    <form action="/register" method="POST">
+                        {% csrf_token %}
+                        Username: <input type="text" name="username"><br><br>
+                        Email: <input type="text" name="email"><br><br>
+                        Address: <input type="text" name="address"><br><br>
+                        Password: <input type="password" name="password"><br><br>
+                        <button >Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

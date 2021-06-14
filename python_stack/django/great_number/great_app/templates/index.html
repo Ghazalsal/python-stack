@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+</head>
+<body>
+    <h3>Welcome to the Great Number Game</h3>
+    <p>I'm thinking of a random number between 1-100</p>
+    <p>Take a guess:</p>
+    <form action="/result" method="POST">
+        {% csrf_token %}
+        <input type="number" name="random1">
+        <button >submit</button>
+    </form>
+</body>
+</html>

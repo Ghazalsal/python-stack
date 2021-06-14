@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    a{
+        float: right;
+    }
+    li{
+        
+        color: green;
+    }
+    ul{
+        list-style: none;
+    }
+</style>
+<body>
+    <a class="btn btn-primary" data-toggle="collapse" href="/logout" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">logout</a>
+    <h1>Success! Welcome, {{first_name}} {{user.last_name}} </h1>
+    <div class="reg" >
+        {% if messages %}
+<ul class="messages">    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,388 @@
+Microsoft Windows [Version 10.0.19041.985]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\User\Desktop\python_stack\my_environments>call pyDjango\Scripts\activate
+
+(pyDjango) C:\Users\User\Desktop\python_stack\my_environments>cd ..
+
+(pyDjango) C:\Users\User\Desktop\python_stack>cd python_stack
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack>cd django
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django>cd django_orm
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm>django-admin startproject ninjaproject
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm>cd ninjaproject
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm\ninjaproject>python manage.py startapp ninjaapp
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm\ninjaproject>code .
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm\ninjaproject>python manage.py makemigrations
+Migrations for 'ninjaapp':
+  ninjaapp\migrations\0001_initial.py
+    - Create model dojos
+    - Create model ninjas
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm\ninjaproject>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, ninjaapp, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying ninjaapp.0001_initial... OK
+  Applying sessions.0001_initial... OK
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm\ninjaproject>python manage.py shell
+Python 3.9.4 (tags/v3.9.4:1f2e308, Apr  4 2021, 13:27:16) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from ninjaapp.models import dojos, ninjas
+>>> newdojo = dojos.objects.create(name = 'ghazal', city ='betlahem', state ='wb')
+>>> newdojo.name
+'ghazal'
+>>> newdojo.city
+'betlahem'
+>>> newdojo = dojos.objects.create(name = 'lana', city ='berziet', state ='wb')
+>>> newdojo = dojos.objects.create(name = 'ibrahim', city ='bernbala', state ='wb')
+>>> dojo = d0jos.object.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'd0jos' is not defined
+>>> dojo = dojos.object.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'dojos' has no attribute 'object'
+>>> dojo = dojos.objects.get(id=1)
+>>> dojo.delete()
+(1, {'ninjaapp.ninjas': 0, 'ninjaapp.dojos': 1})
+>>> dojo = dojos.objects.get(id=2)
+>>> dojo.delete()
+(1, {'ninjaapp.ninjas': 0, 'ninjaapp.dojos': 1})
+>>> dojo = dojos.objects.get(id=3)
+>>> dojo.delete()
+(1, {'ninjaapp.ninjas': 0, 'ninjaapp.dojos': 1})
+>>> newdojo = dojos.objects.create(name = 'nizam', city ='khalel', state ='wb')
+>>> newdojo = dojos.objects.create(name = 'hadeel', city ='nablus', state ='wb')
+>>> newdojo = dojos.objects.create(name = 'haya', city ='gaza', state ='wb')
+>>> dojo = dojos.objects.get(id = 4)
+>>> newninja = ninjas.objects.create(first_name = 'lana', last_name ='yaghi', dojo = dojo)
+>>> newninja.first_name
+'lana'
+>>> newninja.dojo
+<dojos: dojos object (4)>
+>>> newninja.dojo.name
+'nizam'
+>>> newninja = ninjas.objects.create(first_name = 'lady', last_name ='gaga', dojo = dojo)
+>>> newninja = ninjas.objects.create(first_name = 'jhon', last_name ='mandes', dojo = dojo)
+>>> newninja.dojo.name
+'nizam'
+>>> newninja.dojo.name
+'nizam'
+>>> dojo1 = dojos.objects.get(id = 5)
+>>> newninja = ninjas.objects.create(first_name = 'jhon', last_name ='sa3da', dojo= dojo1)
+>>> newninja = ninjas.objects.create(first_name = 'ala', last_name ='ibrahim', dojo= dojo1)
+>>> newninja = ninjas.objects.create(first_name = 'wadee', last_name ='3awad', dojo= dojo1)
+>>> dojo2 = dojos.objects.get(id = 6)
+>>> newninja = ninjas.objects.create(first_name = 'sada', last_name ='diyar', dojo= dojo2)
+>>> newninja = ninjas.objects.create(first_name = 'demi', last_name ='lovato', dojo= dojo2)
+>>> newninja = ninjas.objects.create(first_name = 'selena', last_name ='gomez', dojo= dojo2)
+>>> ninja = ninjas.objects.filter(dojo=dojos.objects.get(id=4))
+>>> ninja.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'first_name'
+>>> ninja.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'name'
+>>> for ninjas in ninja.dojos.all():
+... print(ninja.first_name)
+  File "<console>", line 2
+    print(ninja.first_name)
+    ^
+IndentationError: expected an indented block
+>>>     print(ninja.first_name)
+  File "<console>", line 1
+        print(ninja.first_name)
+    ^
+IndentationError: unexpected indent
+>>> for ninjas in ninja.dojos.all():
+...     print(ninja.first_name)
+...
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'dojos'
+>>> for ninjas in ninja.dojo.all():
+...     print(ninja.first_name)
+...
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'dojo'
+>>> dojoo= dojos.objects.get(id=4)
+>>> ninjaa=ninjas.objects.filter(dojo=dojoo)
+>>> ninjaa.dojoo.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'dojoo'
+>>> ninjaa.dojos.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'dojos'
+>>> ninjas.dojoo.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'ninjas' has no attribute 'dojoo'
+>>> ninjaa.dojoo.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'dojoo'
+>>> some_ninja=ninjas.objects.get(id=1)
+>>> some_ninja.first_name
+'lana'
+>>> some_ninja.dojo.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'first_name'
+>>> some_ninja.dojos.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ninjas' object has no attribute 'dojos'
+>>> some_ninja.dojo.name
+'nizam'
+>>> dojo.some_ninja.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'some_ninja'
+>>> dojo.some_ninja.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'some_ninja'
+>>> dojos.some_ninja.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'dojos' has no attribute 'some_ninja'
+>>> dojos.some_ninja.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'dojos' has no attribute 'some_ninja'
+>>> dojo.some_ninja.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'some_ninja'
+>>> some_ninja.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ninjas' object has no attribute 'name'
+>>> some_ninja.first_name
+'lana'
+>>> dojoo.ninjas.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'ninjas'
+>>> newdojo= dojos.objects.get(id=4)
+>>> newdojo.ninjas.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'ninjas'
+>>> dojo.ninjas.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'ninjas'
+>>> dojo.newninja.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'newninja'
+>>> some_ninja.dojos.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ninjas' object has no attribute 'dojos'
+>>> system = dojos.objects.create(name="ameen",city="ramllah",city="WB")
+  File "<console>", line 1
+SyntaxError: keyword argument repeated: city
+>>> system = dojos.objects.create(name="ameen",city="ramllah",state="WB")
+>>> ninja1= ninjas.objects.create(first_name="system",last_name="alltheway",dojo=system)
+>>> ninja1.dojos.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ninjas' object has no attribute 'dojos'
+>>> ninja1.dojo.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'first_name'
+>>> ninja1.dojos.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ninjas' object has no attribute 'dojos'
+>>> ninja1.dojo.name
+'ameen'
+>>> system=dojos.objects.filter(dojo=system)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\query.py", line 892, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\query.py", line 910, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\sql\query.py", line 1290, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\sql\query.py", line 1315, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\sql\query.py", line 1224, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\sql\query.py", line 1084, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\sql\query.py", line 1065, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "dojos object (7)": Must be "ninjas" instance.
+>>> ninja1=ninjas.objects.filter(dojo=system)
+>>> ninja1.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'name'
+>>> ninja1.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'first_name'
+>>> ninja1.dojos.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'dojos'
+>>> ninja1.dojo.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'dojo'
+>>> ninja1.system.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'system'
+>>> dojos.all().values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'dojos' has no attribute 'all'
+>>> dojos.objects.all().values()
+<QuerySet [{'id': 4, 'name': 'nizam', 'city': 'khalel', 'state': 'wb', 'created_at': datetime.datetime(2021, 5, 23, 10, 50, 42, 630410, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 10, 50, 42, 630410, tzinfo=<UTC>)}, {'id': 5, 'name': 'hadeel', 'city': 'nablus', 'state': 'wb', 'created_at': datetime.datetime(2021, 5, 23, 10, 51, 45, 662364, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 10, 51, 45, 663364, tzinfo=<UTC>)}, {'id': 6, 'name': 'haya', 'city': 'gaza', 'state': 'wb', 'created_at': datetime.datetime(2021, 5, 23, 10, 53, 30, 471467, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 10, 53, 30, 472462, tzinfo=<UTC>)}, {'id': 7, 'name': 'ameen', 'city': 'ramllah', 'state': 'WB', 'created_at': datetime.datetime(2021, 5, 23, 11, 48, 1, 243005, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 48, 1, 243005, tzinfo=<UTC>)}]>
+>>> ninjas.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'lana', 'last_name': 'yaghi', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 11, 5, 43, 605708, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 5, 43, 605708, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'lady', 'last_name': 'gaga', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 11, 7, 51, 246158, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 7, 51, 246158, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'jhon', 'last_name': 'mandes', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 11, 8, 29, 103280, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 8, 29, 103280, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'jhon', 'last_name': 'sa3da', 'dojo_id': 5, 'created_at': datetime.datetime(2021, 5, 23, 11, 10, 47, 536323, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 10, 47, 536323, tzinfo=<UTC>)}, {'id': 5, 'first_name': 'ala', 'last_name': 'ibrahim', 'dojo_id': 5, 'created_at': datetime.datetime(2021, 5, 23, 11, 11, 3, 556718, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 11, 3, 556718, tzinfo=<UTC>)}, {'id': 6, 'first_name': 'wadee', 'last_name': '3awad', 'dojo_id': 5, 'created_at': datetime.datetime(2021, 5, 23, 11, 11, 25, 576764, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 11, 25, 576764, tzinfo=<UTC>)}, {'id': 7, 'first_name': 'sada', 'last_name': 'diyar', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 11, 12, 6, 98943, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 12, 6, 99943, tzinfo=<UTC>)}, {'id': 8, 'first_name': 'demi', 'last_name': 'lovato', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 11, 12, 18, 648536, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 12, 18, 649534, tzinfo=<UTC>)}, {'id': 9, 'first_name': 'selena', 'last_name': 'gomez', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 11, 12, 29, 518983, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 12, 29, 519982, tzinfo=<UTC>)}, {'id': 10, 'first_name': 'system', 'last_name': 'alltheway', 'dojo_id': 7, 'created_at': datetime.datetime(2021, 5, 23, 11, 49, 0, 934737, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 49, 0, 934737, tzinfo=<UTC>)}]>
+>>> stupid= dojos.objects.get(id=4)
+>>> stupid.ninjas.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'ninjas'
+>>> stupid.ninja.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'ninja'
+>>> stupid.ninjas.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'ninjas'
+>>> newninja.objects.all().values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\manager.py", line 176, in __get__
+    raise AttributeError("Manager isn't accessible via %s instances" % cls.__name__)
+AttributeError: Manager isn't accessible via ninjas instances
+>>> newninja.first_name
+'selena'
+>>> newninja.dojo
+<dojos: dojos object (6)>
+>>> newninja.dojo.name
+'haya'
+>>> newninja.dojo.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'all'
+>>> newninja.dojos.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ninjas' object has no attribute 'dojos'
+>>> newninja.dojo
+<dojos: dojos object (6)>
+>>> dojo.ninjas.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'ninjas'
+>>> dojo.newninja.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'newninja'
+>>> dojo.newninja
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'newninja'
+>>> newninja.dojo.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'all'
+>>> dojos.objects.all().values()
+<QuerySet [{'id': 4, 'name': 'nizam', 'city': 'khalel', 'state': 'wb', 'created_at': datetime.datetime(2021, 5, 23, 10, 50, 42, 630410, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 10, 50, 42, 630410, tzinfo=<UTC>)}, {'id': 5, 'name': 'hadeel', 'city': 'nablus', 'state': 'wb', 'created_at': datetime.datetime(2021, 5, 23, 10, 51, 45, 662364, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 10, 51, 45, 663364, tzinfo=<UTC>)}, {'id': 6, 'name': 'haya', 'city': 'gaza', 'state': 'wb', 'created_at': datetime.datetime(2021, 5, 23, 10, 53, 30, 471467, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 10, 53, 30, 472462, tzinfo=<UTC>)}, {'id': 7, 'name': 'ameen', 'city': 'ramllah', 'state': 'WB', 'created_at': datetime.datetime(2021, 5, 23, 11, 48, 1, 243005, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 48, 1, 243005, tzinfo=<UTC>)}]>
+>>> ninjas.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'lana', 'last_name': 'yaghi', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 11, 5, 43, 605708, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 5, 43, 605708, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'lady', 'last_name': 'gaga', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 11, 7, 51, 246158, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 7, 51, 246158, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'jhon', 'last_name': 'mandes', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 11, 8, 29, 103280, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 8, 29, 103280, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'jhon', 'last_name': 'sa3da', 'dojo_id': 5, 'created_at': datetime.datetime(2021, 5, 23, 11, 10, 47, 536323, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 10, 47, 536323, tzinfo=<UTC>)}, {'id': 5, 'first_name': 'ala', 'last_name': 'ibrahim', 'dojo_id': 5, 'created_at': datetime.datetime(2021, 5, 23, 11, 11, 3, 556718, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 11, 3, 556718, tzinfo=<UTC>)}, {'id': 6, 'first_name': 'wadee', 'last_name': '3awad', 'dojo_id': 5, 'created_at': datetime.datetime(2021, 5, 23, 11, 11, 25, 576764, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 11, 25, 576764, tzinfo=<UTC>)}, {'id': 7, 'first_name': 'sada', 'last_name': 'diyar', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 11, 12, 6, 98943, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 12, 6, 99943, tzinfo=<UTC>)}, {'id': 8, 'first_name': 'demi', 'last_name': 'lovato', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 11, 12, 18, 648536, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 12, 18, 649534, tzinfo=<UTC>)}, {'id': 9, 'first_name': 'selena', 'last_name': 'gomez', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 11, 12, 29, 518983, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 12, 29, 519982, tzinfo=<UTC>)}, {'id': 10, 'first_name': 'system', 'last_name': 'alltheway', 'dojo_id': 7, 'created_at': datetime.datetime(2021, 5, 23, 11, 49, 0, 934737, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 49, 0, 934737, tzinfo=<UTC>)}]>
+>>> dojos.objects.get(id=4)
+<dojos: dojos object (4)>
+>>> dojos.objects.get(id=4).values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'values'
+>>> dojos.objects.get(id=4).__dict__
+{'_state': <django.db.models.base.ModelState object at 0x0000014C91CF5700>, 'id': 4, 'name': 'nizam', 'city': 'khalel', 'state': 'wb', 'created_at': datetime.datetime(2021, 5, 23, 10, 50, 42, 630410, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 10, 50, 42, 630410, tzinfo=<UTC>)}
+>>> first=dojos.objects.get(id=4)
+>>> first.dojo.all()
+<QuerySet [<ninjas: ninjas object (1)>, <ninjas: ninjas object (2)>, <ninjas: ninjas object (3)>]>
+>>> first.dojo.all().__dict__
+{'model': <class 'ninjaapp.models.ninjas'>, '_db': None, '_hints': {'instance': <dojos: dojos object (4)>}, 'query': <django.db.models.sql.query.Query object at 0x0000014C91CEF3D0>, '_result_cache': None, '_sticky_filter': False, '_for_write': False, '_prefetch_related_lookups': (), '_prefetch_done': False, '_known_related_objects': {<django.db.models.fields.related.ForeignKey: dojo>: {4: <dojos: dojos object (4)>}}, '_iterable_class': <class 'django.db.models.query.ModelIterable'>, '_fields': None}
+>>> first=dojos.objects.get(id=5)
+>>> first.dojo.all().__dict__
+{'model': <class 'ninjaapp.models.ninjas'>, '_db': None, '_hints': {'instance': <dojos: dojos object (5)>}, 'query': <django.db.models.sql.query.Query object at 0x0000014C91CEFFA0>, '_result_cache': None, '_sticky_filter': False, '_for_write': False, '_prefetch_related_lookups': (), '_prefetch_done': False, '_known_related_objects': {<django.db.models.fields.related.ForeignKey: dojo>: {5: <dojos: dojos object (5)>}}, '_iterable_class': <class 'django.db.models.query.ModelIterable'>, '_fields': None}
+>>> first=dojos.objects.get(id=6)
+>>> first.dojo.all().__dict__
+{'model': <class 'ninjaapp.models.ninjas'>, '_db': None, '_hints': {'instance': <dojos: dojos object (6)>}, 'query': <django.db.models.sql.query.Query object at 0x0000014C91CEFB80>, '_result_cache': None, '_sticky_filter': False, '_for_write': False, '_prefetch_related_lookups': (), '_prefetch_done': False, '_known_related_objects': {<django.db.models.fields.related.ForeignKey: dojo>: {6: <dojos: dojos object (6)>}}, '_iterable_class': <class 'django.db.models.query.ModelIterable'>, '_fields': None}
+>>> first.dojo.all().__dict__
+{'model': <class 'ninjaapp.models.ninjas'>, '_db': None, '_hints': {'instance': <dojos: dojos object (6)>}, 'query': <django.db.models.sql.query.Query object at 0x0000014C91CEFC10>, '_result_cache': None, '_sticky_filter': False, '_for_write': False, '_prefetch_related_lookups': (), '_prefetch_done': False, '_known_related_objects': {<django.db.models.fields.related.ForeignKey: dojo>: {6: <dojos: dojos object (6)>}}, '_iterable_class': <class 'django.db.models.query.ModelIterable'>, '_fields': None}
+>>> first.dojo.all().__dict__
+{'model': <class 'ninjaapp.models.ninjas'>, '_db': None, '_hints': {'instance': <dojos: dojos object (6)>}, 'query': <django.db.models.sql.query.Query object at 0x0000014C91CEFF70>, '_result_cache': None, '_sticky_filter': False, '_for_write': False, '_prefetch_related_lookups': (), '_prefetch_done': False, '_known_related_objects': {<django.db.models.fields.related.ForeignKey: dojo>: {6: <dojos: dojos object (6)>}}, '_iterable_class': <class 'django.db.models.query.ModelIterable'>, '_fields': None}
+>>> lastninja = ninjas.objects.get(id = 9)
+>>> lastninja.ninja.all().__dict__
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ninjas' object has no attribute 'ninja'
+>>> lastninja.dojo.all().__dict__
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'all'
+>>> lastninja.dojo.values
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'values'
+>>> lastninja.dojo.values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'values'
+>>> lastninja.ninja.values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ninjas' object has no attribute 'ninja'
+>>> lastninja.dojo.all().values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'dojos' object has no attribute 'all'
+>>> lastninja.dojo.name
+'haya'
+>>>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <center>
+        <h1>Add a Book</h1>
+        <form action="/addbook" method="POST">
+        {% csrf_token%}
+        <input type="hidden">
+        Title : <input type="text" name="title"><br><br>
+        Description : <input type="text" name="desc" class="text"></textarea><br><br>
+        <button>Add</button>
+        </form>
+    </center>
+    <h2>all books</h2>
+    <li>{%for i in all_books%}</li>
+    <li> <a href="/get-info/{{i.id}}">{{i.title}}</a> </li>
+    <li>{%endfor%}</li>
+</body>
+</html>

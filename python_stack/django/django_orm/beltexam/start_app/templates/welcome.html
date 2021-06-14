@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <title>Thought</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+</head>
+
+<body>
+    <nav>
+        <h3>Hi, {{first_name}} {{last_name}} </h3>
+        <a  data-toggle="collapse" href="/logout" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Logout</a>
+    </nav>
+    <br>
+<section>
+    <div class="reg" >
+        {% if messages %}
+<ul class="messages">    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
+    <form class="form-inline" action="/addthought" method="POST">
+        {%csrf_token%}
+        <label for="formGroupExampleInput"></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" cols="150" name="thought" placeholder="Post a thought"> </textarea>
+        <button class="btn btn-primary" > Add Thought</button>
+    </form>
+</section>
+<hr>
+<br>
+    <div class="details" > 
+            
+    {% for i in thought %}
+    {{i.uploaded_by.first_name}} Says:
+    <p >{{i.thought}}</p> 
+    {%if request.session.user == i.uploaded_by.id %}
+    <a class="btn btn-danger" data-toggle="collapse" href="/delete/{{i.id}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Delete</a>
+    {%endif%} <br>
+    <a class="det" href="/thoughts/{{i.id}}" >details</a> <br>
+    {%endfor%}
+    </div> 
+    
+    
+    
+</body>
+</html>

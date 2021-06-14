@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin: 0 auto;
+    width: 1000px;
+}
+.boxbox{
+    display: block;
+}
+.box{
+    display: inline-block;
+    width: 150px;
+    height: 100px;
+    margin-left: 10px;
+    padding: 40px;
+    background-color: rgb(47, 219, 191);
+}
+h1 {
+    display: block;
+    text-align: center;
+    margin-left: 10px;
+} 
+</style>
+</head>
+<body>
+
+<h1>Welcome!</h1>
+<div  class="boxbox" >
+    
+    {%for i in range(0,x,1):%}
+        <div  class="box" ></div>
+    {% endfor %}
+</div>
+</body>
+</html>

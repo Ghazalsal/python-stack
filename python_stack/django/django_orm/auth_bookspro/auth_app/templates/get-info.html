@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>title: {{book.title}}</h1>
+    <h1>desc:{{book.desc}}</h1>
+    <form action="/add_authtobook/{{book.id}}" method="POST">
+    {% csrf_token%}
+    <select name="author">Select an Author
+        {%for author in all_auth%}
+        <option value="{{author.id}}">{{author.first_name}} {{author.last_name}} </option>
+        {%endfor%}
+    </select>
+    <button> Add</button>
+</form>
+<li>{%for i in writers%}</li>
+<li>{{i.first_name}}</li>
+{%endfor%}
+</body>
+</html>

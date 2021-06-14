@@ -1,0 +1,27 @@
+1)python manage.py shell
+2)users.objects.create(first_name ="malak", last_name="akkas", email_address = "malak@gmail.com", age = 23)
+3)users.objects.create(first_name ="ghazal", last_name="salamahe", email_address = "ghazal@gmail.com")
+4)users.objects.create(first_name ="lana", last_name="yaghi", email_address = "lana@gmail.com")
+-- now we have created 3 new users--
+5)users.objects.all().values()
+-- shows every user that we have created--
+6)users.objects.get(id=3).__dict__
+--shows the values of the last user we created--
+7)users.objects.get(id=1).__dict__
+--shows the values of the first user we created--
+8) user= users.objects.get(id=3)
+--getting the user with the id of 3 so that we can change it --
+9)user.last_name="Pancackes"
+--updating the last name for user with id=3--
+10)user.save()
+--saving the updated info--
+11)users.objects.get(id=3).__dict__
+--display the change in value--
+12)user=users.objects.get(id=2)
+--getting the user with the id of 2 so that we can delete it --
+13)user.delete()
+-- deleting the user with id=2--
+14)users.objects.get(id=2).__dict__
+--shows that it has been deleted--
+15)users.objects.all().order_by("first_name")
+--Get all the users, sorted by their first name--

@@ -1,0 +1,56 @@
+1) from books_auth_app.models import *
+2)books = Books.objects.create(title = ' C Sharp', desc = 'ayeshi')
+3) books = Books.objects.create(title = ' Java', desc = 'ayaeshss')
+4) books = Books.objects.create(title = ' PHP', desc = 'hey')
+5) books = Books.objects.create(title = ' Ruby', desc = 'salamall')
+6)authors = Authors.objects.create(first_name = 'jane', last_name = 'Auste')
+7)authors = Authors.objects.create(first_name =' emilye', last_name = 'dickinson')
+8) authors = Authors.objects.create(first_name =' fyodor', last_name = 'dostovsky')
+9) authors = Authors.objects.create(first_name =' William', last_name = 'shakespear')
+10) authors = Authors.objects.create(first_name =' Lau', last_name = 'Tzu')
+-- after adding the new field 
+1) python manage.py makemigrations
+2) python manage.py migrate
+3) python manage.py shell
+4) from books_auth_app.models import *
+5)book = Books.objects.get(id = 1)
+6) book.title = 'c#'
+7) book.save()
+8)author = Authors.objects.get(id = 4)
+9) author.first_name = 'bill'
+10) author.save()
+11)auth = Authors.objects.get(id = 1)
+12) book1= Books.objects.get(id=1)
+13)auth.book.add(book1)
+14)book2= Books.objects.get(id=2)
+15) auth.book.add(book2)
+16) auth2 = Authors.objects.get(id = 2)
+17) auth2.book.add(book1)
+18) auth2.book.add(book2)
+19) book3 = Books.objects.get(id = 3)
+20) auth2.book.add(book3)
+21) auth3 = Authors.objects.get(id = 3)
+22) auth3.book.add(book1)
+23) auth3.book.add(book2)
+24) auth3.book.add(book3)
+25) book4 = Books.objects.get(id = 4)
+26) auth3.book.add(book4)
+27)auth4 = Authors.objects.get(id = 4)
+28) auth4.book.add(book1)
+29) auth4.book.add(book2)
+30) auth4.book.add(book3)
+31) auth4.book.add(book4)
+32) book5 = Books.objects.get(id = 5)
+33) auth4.book.add(book5)
+34)this_book = Books.objects.get(id=3)
+35) this_book.Author.all()
+36)this_book = Books.objects.get(id=3)
+37) this_book.Author.remove(auth)
+38)auth5 = Authors.objects.get(id=5)
+39)auth5.book.add(book2)
+40)auth3.book.all()
+--<QuerySet [<Books: Books object (1)>, <Books: Books object (2)>, <Books: Books object (3)>, <Books: Books object (4)>]>--
+41) auth3.book.all().values()
+42)book5.Author.all()
+--<QuerySet [<Authors: Authors object (4)>]>--
+43) book5.Author.all().values()

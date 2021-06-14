@@ -1,0 +1,61 @@
+.body{
+    display: flex;
+}
+.reg{
+    flex: 1;
+    margin: 20px;
+}
+nav {
+display: flex;
+}
+nav a{
+    margin-right: 20px;
+    text-decoration: underline;
+    font-size: larger;
+    float: right;
+}
+nav h3{
+    flex: 6;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.dashboard a{
+    margin-right: 20px;
+    text-decoration: underline;
+    font-size: larger;
+    float: right;
+}
+.details{
+    display: block;
+    width: fit-content;
+    
+}
+
+.details p{
+    display: inline-block;
+    border: 1px solid black;
+    padding: 20px;
+}
+.details .det{
+    text-decoration: underline;
+}
+.details #hrefs{
+    float: right;
+}
+.details #href{
+    float: right;
+}

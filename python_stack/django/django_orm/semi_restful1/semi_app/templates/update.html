@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semi-Restful TV Shows</title>
+</head>
+<style>
+    .link{
+        float: right;
+    }
+</style>
+<body>
+    <center>
+        <h1>Edit Show {{shows.id}}</h1>
+        <a href="/shows" class="link">Go Back</a>
+        <form action="/shows/render/edit" method="POST"  >
+            <input type="hidden" name="hid" value="{{show.id}}">
+            {% csrf_token %}
+            
+            Title:<br><br> 
+
+            <input type="text" name="title" value="{{show.title}}"><br><br>
+            Network:
+            <input type="text" name="Network" value="{{show.Network}}"> 
+            Release Date:<input type="date" name="release_date" value="{{show.release_date|date:'Y-m-d' }}"><br><br>
+            Description:<br><br> 
+            <textarea name="desc" rows="4" cols="50" >{{show.desc}}</textarea><br><br>
+            <button>Update</button><br><br>
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <a href="/shows/{{show.id}}">Go To Show</a>
+
+        </form>
+    </center>
+</body>
+</html>

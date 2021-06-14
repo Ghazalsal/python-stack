@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+</style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Full name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in users %}
+            <tr>
+                <td>{{row.first_name}}</td>
+                <td>{{row["last_name"]}}</td> 
+                <td>{{row.first_name +" "+ row.last_name}}</td>
+            </tr>
+                {% endfor %} 
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+.boxbox{
+    display: block;
+}
+.box{
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    background-color:{{colorChange}};
+}
+.redBox{
+    background-color: red;
+}
+.blackBox{
+    background-color: rgb(0, 0, 0);
+}
+
+
+</style>
+</head>
+<body>
+
+
+<div  class="boxbox" >
+    {%for i in range(0,x,1): %}
+        {%for j in range(0,y,1): %}
+            {% if (j+i) % 2 == 0 :%}
+                <div  class="box redBox" ></div>
+            {% else: %}
+                <div  class="box blackBox" ></div>
+            {% endif %}
+            
+        {% endfor %}
+        <br>
+    {% endfor %}
+</div>
+</body>
+</html>

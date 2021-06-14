@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semi-Restful TV Shows</title>
+</head>
+<style>
+    .link{
+        float: right;
+    }
+</style>
+<body>
+    <center>
+        <h1>Add a New Show</h1>
+        <a href="/shows" class="link">Go Back</a>
+        <form action="/shows/new/render" method="POST">
+            {% csrf_token %}
+            
+            Title: <input type="text" name="title"><br><br>
+            Network: <input type="text" name="Network">
+            Release Date: <input type="date" name="release_date"><br><br>
+            Description: <textarea name="desc" rows="4" cols="50" ></textarea><br><br>
+            <button>Create</button>
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </form>
+       
+    </center>
+</body>
+</html>

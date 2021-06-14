@@ -1,0 +1,22 @@
+1)python manage.py shell
+2)from dojo_app.models import ninjas,dojos
+3)dojos.objects.create(name="ghazal",city="bethlehem",state="west-bank")
+4)dojos.objects.create(name="lana",city="ramallah",state="west-bank")
+5)dojos.objects.create(name="mohammad",city="jenin",state="west-bank")
+6)dojo=dojos.objects.get(id=1)
+7)dojo.delete()
+8)dojo=dojos.objects.get(id=2)
+9)dojo.delete()
+10)dojo=dojos.objects.get(id=3)
+11) dojo.delete()
+12)dojos.objects.create(name="kamal",city="nablus",state="west-bank")
+13)dojos.objects.create(name="saad",city="hebron",state="west-bank")
+14)dojos.objects.create(name="jad",city="ramallah",state="west-bank")
+--belongs to the same dojo
+15)new = dojos.objects.create(name="mohammasad",city="jenin",state="west-bank")
+16)ninja.dojo.name
+17)ninja=ninjas.objects.create(first_name="ibrahim",last_name="shweiki",dojo=new)
+18) ninja.dojo.name
+19)ninja1=ninjas.objects.create(first_name="hadeel",last_name="ba3rfsh",dojo=new)
+20) ninja1.dojo.name
+--

@@ -1,0 +1,52 @@
+>>> from ninjaapp.models import ninjas,dojos
+>>> dojos.objects.create(name="fatimaheh",city="hebron", state="wb", desc="yes yes i will go ask")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\query.py", line 420, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\User\Desktop\python_stack\my_environments\pyDjango\lib\site-packages\django\db\models\base.py", line 501, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: dojos() got an unexpected keyword argument 'desc'
+>>> dojos.objects.create(name="fatimaheh",city="hebron", state="wb")
+<dojos: dojos object (8)>
+>>> exit()
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm\ninjaproject>python manage.py makemigrations ninjaapp
+No changes detected in app 'ninjaapp'
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm\ninjaproject>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, ninjaapp, sessions
+Running migrations:
+  No migrations to apply.
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm\ninjaproject>python manage.py makemigrations ninjaapp
+You are trying to add a non-nullable field 'desc' to dojos without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> "hello"
+Migrations for 'ninjaapp':
+  ninjaapp\migrations\0002_dojos_desc.py
+    - Add field desc to dojos
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm\ninjaproject>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, ninjaapp, sessions
+Running migrations:
+  Applying ninjaapp.0002_dojos_desc... OK
+
+(pyDjango) C:\Users\User\Desktop\python_stack\python_stack\django\django_orm\ninjaproject>python manage.py shell
+Python 3.9.4 (tags/v3.9.4:1f2e308, Apr  4 2021, 13:27:16) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from ninjaapp.models import ninjas,dojos
+>>> dojos.objects.create(name="saad",city="hebrons",state="havana",desc="yes yes i will go ask")
+<dojos: dojos object (9)>
+>>>
